@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('cts-search-app2 App', () => {
+describe('cts-search-app App', () => {
   let page: AppPage;
 
   beforeEach(() => {

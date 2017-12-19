@@ -1,0 +1,10 @@
+<div class="col s12 m3 video-list">
+  <div *ngFor="let item of trialData$" class="collection">
+    <a href="#" class="collection-item" [routerLink]="['/details/' + item.nci_id]">
+      <div>
+        <div><b class="card-title">{{item.brief_title}}</b></div>
+        <div>{{item.brief_summary}}</div>
+      </div>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<!-- PAGE TITLE -->
+<h1><span>Find NCI-Supported Clinical Trials</span></h1>
+
+<p>NCI-supported clinical trials are those sponsored or otherwise financially supported by NCI. See our guide, <a href="/about-cancer/treatment/clinical-trials/search/trial-guide">Steps to Find a Clinical Trial</a>, to learn about options for finding trials not included in NCI's collection.</p>
+<p><strong>Search Tip:</strong> For more search options, use our <a href="/about-cancer/treatment/clinical-trials/advanced-search">advanced search</a>.</p>
+
+
+<div id="cts-simple" class="medium-9 small-12 columns">
+
+  <form [formGroup]="searchFormGroup" (ngSubmit)="searchTrials()">
+    <fieldset id="fieldset--type">
+      <legend><span>Cancer Type/Keyword</span></legend>
+      <!--<a href="/about-cancer/treatment/clinical-trials/search/help#basicsearch" class="text-icon-help" target="_blank" aria-label="Help">?</a>-->
+
+      <input placeholder="Start typing to select a cancer type" maxlength="100" id="keyword" aria-label="Cancer Type/Keyword" type="text" formControlName="keyword">
+    </fieldset>
+
+    <div class="field-cols">
+      <fieldset id="fieldset--age">
+        <legend><span>Age</span></legend>
+        <!--<a href="/about-cancer/treatment/clinical-trials/search/help#basicsearch" class="text-icon-help" target="_blank" aria-label="Help">?</a>-->
+
+        <input id="age" autocomplete="off" maxlength="3" aria-label="Age" placeholder="" error-msg="Please enter a number between 1 and 120." type="text" formControlName="age">
+        <div>Your age helps determine which trials are right for you.</div>
+        <span *ngIf="searchFormGroup.controls[ 'age' ].hasError('maxlength')">
+            Age cannot be more than {{ searchFormGroup.controls[ 'age' ].errors.maxlength.requiredLength }} characters long.
+        </span>
+      </fieldset>
+
+      <fieldset id="fieldset--zip">
+        <legend><span>U.S. ZIP Code</span></legend>
+        <!--<a href="/about-cancer/treatment/clinical-trials/search/help#basicsearch" class="text-icon-help" target="_blank" aria-label="Help">?</a>-->
+
+        <input id="zipCode" aria-label="Zip Code" maxlength="5" error-msg="Please enter a valid 5 digit ZIP code." type="text" formControlName="zipCode">
+        <div>Show trials near this U.S. ZIP code.</div>
+        <span *ngIf="searchFormGroup.controls[ 'zipCode' ].hasError('maxlength')">
+            Zip code cannot be more than {{ searchFormGroup.controls[ 'zipCode' ].errors.maxlength.requiredLength }} characters long.
+        </span>
+      </fieldset>
+    </div>
+
+    <input name="rl" value="1" id="rl" type="hidden">
+    <div class="btn-group">
+      <!--<input class="submit button" value="Search" type="submit">-->
+      <button class="btn" [disabled]="!searchFormGroup.valid" [class.disabled]="!searchFormGroup.valid">Search</button>
+    </div>
+
+  </form>
+</div>
